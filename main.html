@@ -1,47 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="design.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GymShop — демо</title>
+  <link rel="stylesheet" href="design.css">
 </head>
 <body>
+  <div class="wrap">
     <header class="header">
-        <div class="logo">
-            <a class="text_logo" href="#">❚█═█❚</a>
-            <h1>GymShop</h1>
-        </div>
-        <div class="cart">
-            <button class="cart_btn">Корзина</button>
-        </div>
+      <div class="logo">
+        <a class="icon_logo" href="#"><img src="images/logo.png"></a>
+        <h1>GymShop</h1>
+      </div>
+      <div>
+        <button class="cart_btn">Корзина</button>
+      </div>
     </header>
 
+    <!-- товары -->
     <div class="products">
-        <div class="product-card">
-            <img src="images/dumbbells.jpg" alt="Название товара" class="product-image">
-            <div class="product-name">Название товара</div>
-            <div class="product-price">1 999 ₽</div>
-            <button class="add-to-cart-btn">Добавить в корзину</button>
-        </div>
-        <div class="product-card">
-            <img src="images/dumbbells.jpg" alt="Название товара" class="product-image">
-            <div class="product-name">Название товара</div>
-            <div class="product-price">1 999 ₽</div>
-            <button class="add-to-cart-btn">Добавить в корзину</button>
-        </div>
-        <div class="product-card">
-            <img src="images/dumbbells.jpg" alt="Название товара" class="product-image">
-            <div class="product-name">Название товара</div>
-            <div class="product-price">1 999 ₽</div>
-            <button class="add-to-cart-btn">Добавить в корзину</button>
-        </div>
-        <div class="product-card">
-            <img src="images/dumbbells.jpg" alt="Название товара" class="product-image">
-            <div class="product-name">Название товара</div>
-            <div class="product-price">1 999 ₽</div>
-            <button class="add-to-cart-btn">Добавить в корзину</button>
-        </div>
+      <div class="product-card">
+        <img src="images/dumbbells.jpg" alt="Гантели" class="product-image">
+        <div class="product-name">Гантели 2 шт.</div>
+        <div class="product-price">1 990 ₽</div>
+        <button class="add-to-cart-btn">Добавить в корзину</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/grif.png" alt="Штанга" class="product-image">
+        <div class="product-name">Штанга 20 кг</div>
+        <div class="product-price">4 490 ₽</div>
+        <button class="add-to-cart-btn">Добавить в корзину</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/fitness.jpg" alt="Коврик" class="product-image">
+        <div class="product-name">Фитнес-коврик</div>
+        <div class="product-price">990 ₽</div>
+        <button class="add-to-cart-btn">Добавить в корзину</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/remni.jpg" alt="Ремень" class="product-image">
+        <div class="product-name">Ремешки для тяги</div>
+        <div class="product-price">590 ₽</div>
+        <button class="add-to-cart-btn">Добавить в корзину</button>
+      </div>
     </div>
+  </div>
+
+  <!-- модальное окно корзины -->
+  <div id="cart-overlay" class="hidden" aria-hidden="true">
+    <div class="cart-modal" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <button id="cart-close" aria-label="Закрыть">×</button>
+      <h2 id="cartTitle">Ваша корзина</h2>
+
+      <div class="cart-body">
+        <div class="cart-items" id="cart-items"></div>
+
+        <div class="cart-summary">
+          <div class="total-row"><span>Итого</span><strong id="cart-total">0 ₽</strong></div>
+          <button class="checkout-btn" id="checkout-btn">Оформить заказ</button>
+          <button class="clear-cart-btn" id="clear-cart-btn">Очистить корзину</button>
+
+          <!-- встроенная форма заказа (появляется по кнопке) -->
+          <form id="order-form" class="order-form hidden">
+            <h3>Оформление заказа</h3>
+            <label>Имя и фамилия <input id="order-name" required /></label>
+            <label>Телефон <input id="order-phone" required /></label>
+            <label>Адрес <input id="order-address" required /></label>
+            <label>Комментарий <textarea id="order-comment"></textarea></label>
+            <div style="display:flex; gap:8px">
+              <button type="submit">Создать заказ</button>
+              <button type="button" id="order-cancel">Отмена</button>
+            </div>
+            <div id="order-message" style="margin-top:8px; font-weight:700; color:var(--yellow)"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="cart.js"></script>
 </body>
 </html>
